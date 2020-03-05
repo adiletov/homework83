@@ -15,7 +15,11 @@ app.use(express.json());
 
 
 const run = async ()=>{
-    await mongoose.connect('mongodb://localhost/playlist', {useNewUrlParser: true, useUnifiedTopology: true});
+    await mongoose.connect('mongodb://localhost/playlist', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    });
     app.use('/artists',artists );
     app.use('/albums', albums );
     app.use('/tracks', tracks);
