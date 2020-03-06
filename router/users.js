@@ -25,12 +25,12 @@ router.post('/sessions', async (req,res)=>{
     const user = await User.findOne({username: req.body.username});
 
     if (!user){
-        return res.status(400).send({error: 'Username not found'})
+        return res.status(400).send({error: 'Username not found or password in correct'})
     }
     const isMatch = await bcrypt.compare(req.body.password, user.password);
 
     if (!isMatch){
-        return res.status(400).send({error: 'Password in correct'})
+        return res.status(400).send({error: 'Username not found or password in correct'})
     }
 
     return res.send({token: user.token})
