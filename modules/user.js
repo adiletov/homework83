@@ -19,9 +19,11 @@ const newSchema = new Schema({
     }
 });
 
+
 newSchema.methods.generateToken = function (cb) {
     this.token = nanoid();
 };
+
 
 newSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();

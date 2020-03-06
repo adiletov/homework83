@@ -29,6 +29,6 @@ const run = async ()=>{
 };
 
 
-run().catch(e=> {
+run().catch(e => {
     console.error(e)
 });
